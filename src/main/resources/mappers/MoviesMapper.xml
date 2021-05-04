@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hx.mapper.MoviesMapper">
+    <delete id="deleteMovie" parameterType="int" >
+        delete  from movies where mid = #{mid}
+    </delete>
+
+    <insert id="insertMovie" parameterType="movies">
+        insert into movies (movies_name, description, director, area, actor, era, url)
+        values (#{moviesName}, #{description}, #{director}, #{area}, #{actor}, #{era}, #{url})
+    </insert>
+
+    <select id="findAllMovies" resultType="movies">
+        select * from movies
+    </select>
+
+    <select id="findAllByGroup" resultType="movies">
+        select * from movies limit ${start}, ${pageSize}
+    </select>
+</mapper>
